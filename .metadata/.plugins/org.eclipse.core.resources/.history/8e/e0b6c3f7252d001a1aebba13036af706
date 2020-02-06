@@ -1,0 +1,15 @@
+<%@ page contentType="text/html; charset=EUC-KR"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<h2>Core Tag2</h2>
+<!-- if ÅÂ±× -->
+<c:if test="${param.id!=null}">
+<b>${param.id}</b>
+</c:if>
+<c:if test="${param.id==null}">
+<b>Guest</b>
+</c:if>
+<c:choose>
+	<c:when test="">
+	
+	</c:when>
+</c:choose>

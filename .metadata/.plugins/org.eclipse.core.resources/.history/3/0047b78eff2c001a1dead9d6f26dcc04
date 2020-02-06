@@ -1,0 +1,5 @@
+<!-- scope3.jsp  -->
+<%@ page contentType="text/html; charset=EUC-KR"%>
+<%
+	session.setAttribute("id", "");		
+%>

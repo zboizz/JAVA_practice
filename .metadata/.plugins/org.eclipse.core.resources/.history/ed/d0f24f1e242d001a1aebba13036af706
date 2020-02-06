@@ -1,0 +1,12 @@
+<!-- coreTags1.jsp -->
+<%@ page contentType="text/html; charset=EUC-KR"%>
+<%@taglib prefix="c" uri=http://java.sun.com/jsp/jstl/core"%>
+<!-- prefix를 작성할때 core인 경우에는 관례적으로 c 를 사용 -->
+<%
+		request.setCharacterEncoding("EUC-KR");
+		String str1 = "Java의 JSTL";
+		String str2 = null;		
+%>
+<h2>Core Tags1</h2>
+<!-- 4개의 저장소에 변수를 선언 -->
+<c:set var="str3" value="JSPStudy" scope="page"/>

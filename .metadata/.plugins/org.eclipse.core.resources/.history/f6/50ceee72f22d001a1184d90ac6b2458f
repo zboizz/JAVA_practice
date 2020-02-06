@@ -1,0 +1,9 @@
+<%@ page contentType="text/html; charset=EUC-KR"%>
+<%@taglib prefix="tag" uri="/WEB-INF/tlds/PageTag.tld" %>
+<%
+		request.setCharacterEncoding("EUC-KR");
+		int start = 1;
+		int end = 10;
+		int nowPage=1;
+		if (request.getParameter("nowPage")!=null)
+%>

@@ -1,0 +1,7 @@
+<!-- el1.jsp -->
+<%@ page contentType="text/html; charset=EUC-KR"%>
+<%
+		request.setCharacterEncoding("EUC-KR");
+		//ÀúÀå¼Ò: page, request, session, application
+		request.setAttribute("siteName", "JSPStudy.co.kr")
+%>

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<typeInfoHistroy>
+    <typeInfo handle="=myJava/C:\/Java\/jdk-12.0.2\/lib\/jrt-fs.jar`java.desktop&lt;java.awt(Frame.class[Frame" modifiers="33" timestamp="1566265604798"/>
+    <typeInfo handle="=myJava/C:\/Java\/jdk-12.0.2\/lib\/jrt-fs.jar`java.desktop&lt;java.awt.event(MouseListener.class[MouseListener" modifiers="1537" timestamp="1566265604798"/>
+    <typeInfo handle="=myJava/C:\/Java\/jdk-12.0.2\/lib\/jrt-fs.jar`java.desktop&lt;java.awt.peer(MouseInfoPeer.class[MouseInfoPeer" modifiers="1537" timestamp="1566265604798"/>
+    <typeInfo handle="=myJava/C:\/Java\/jdk-12.0.2\/lib\/jrt-fs.jar`java.desktop&lt;java.awt.event(MouseMotionListener.class[MouseMotionListener" modifiers="1537" timestamp="1566265604798"/>
+    <typeInfo handle="=myJava/C:\/Java\/jdk-12.0.2\/lib\/jrt-fs.jar`java.desktop&lt;java.awt.event(ActionListener.class[ActionListener" modifiers="1537" timestamp="1566265604798"/>
+    <typeInfo handle="=myJava/C:\/Java\/jdk-12.0.2\/lib\/jrt-fs.jar`java.desktop&lt;javax.swing.event(ChangeListener.class[ChangeListener" modifiers="1537" timestamp="1566265604798"/>
+    <typeInfo handle="=myJava/C:\/Java\/jdk-12.0.2\/lib\/jrt-fs.jar`java.desktop&lt;javax.swing(JFrame.class[JFrame" modifiers="33" timestamp="1566265604798"/>
+</typeInfoHistroy>

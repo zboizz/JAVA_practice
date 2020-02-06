@@ -1,0 +1,150 @@
+<%@page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@page import="restDB.ResMgr"%>
+<%@page import="restDB.ResBean"%>
+<%@page import="java.util.Vector"%>
+
+<%
+	request.setCharacterEncoding("UTF-8");
+%>
+
+<!DOCTYPE HTML>
+<html lang="ko" xmlns:v="urn:schemas-microsoft-com:vml">
+<head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        <title>헝그리맵</title>
+</head>
+<body>
+<script type="text/javascript" src="http://openapi.map.naver.com/openapi/naverMap.naver?ver=2.0&key=76e454746ebffa3a92415301b8906f7b"></script>
+<div id="Map" style="width: 470px; height: 500px; margin: 1px;"></div>
+<script type="text/javascript">	
+
+		var groups = new Array();
+		var rest = new Array();
+		var menu = new Array();
+		var tell = new Array();
+	
+		var oCenterPoint = new nhn.api.map.LatLng(35.1526900, 129.1115000);
+		nhn.api.map.setDefaultPoint('LatLng');
+		oMap = new nhn.api.map.Map('Map', {
+		point : oCenterPoint,
+		zoom : 12, // - 초기 줌 레벨 
+		//boundary : m,
+		enableWheelZoom : true,
+		enableDragPan : true,
+		enableDblClickZoom : false,
+		mapMode : 0,
+		activateTrafficMap : false,
+		activateBicycleMap : false,
+		minMaxLevel : [ 1, 14 ],
+		size : new nhn.api.map.Size(470, 500),
+	//detectCoveredMarker : true
+		});
+		var markerCount = 0;
+		//컨트롤 설정
+		var mapZoom = new nhn.api.map.ZoomControl(); // - 줌 컨트롤 선언 
+		mapZoom.setPosition({
+			left : 10,
+			bottom : 240
+		}); // - 줌 컨트롤 위치 지정 
+		oMap.addControl(mapZoom); // - 줌 컨트롤 추가. 
+		mapTypeChangeButton = new nhn.api.map.MapTypeBtn(); // - 지도 타입 버튼 선언 
+		mapTypeChangeButton.setPosition({
+			top : 10,
+			left : 680
+		}); // - 지도 타입 버튼 위치 지정 
+		oMap.addControl(mapTypeChangeButton); // - 지도타입버튼 
+	
+		//마커사이즈 이미지
+		var oSize = new nhn.api.map.Size(28, 37);
+		var oOffset = new nhn.api.map.Size(14, 37);
+		var oIcon = new nhn.api.map.Icon(
+				'http://static.naver.com/maps2/icons/pin_spot2.png', oSize,
+				oOffset);
+	
+		var infoWindow = new nhn.api.map.InfoWindow(); // - info window 생성 
+		var oLabel = new nhn.api.map.MarkerLabel(); // - 마커 라벨 선언. 
+	
+		//oLabel.setVisible(true, oMarker);                      // 마커 라벨 보이기 
+		//infoWindow.setPoint(oMarker.getPoint());
+		//infoWindow.setVisible(true);                             // - infowindow 표시 여부 지정. 
+		//infoWindow.setPosition({right : 5, top : 20});
+		oMap.addOverlay(infoWindow); // - 지도에 추가.  
+		oMap.addOverlay(oLabel); // - 마커 라벨 지도에 추가. 기본은 라벨이 보이지 않는 상태로 추가됨.
+
+<%
+		ResMgr mgr = new ResMgr();
+		Vector<ResBean> vlist = mgr.getList();
+	//out.println(vlist.size());
+		for(int i=0;i<vlist.size();i++){
+			ResBean bean = vlist.get(i);
+%>
+		var oPoint = new nhn.api.map.LatLng(<%=bean.getLat()%>, <%=bean.getLongs()%>);
+		var oMarker = new nhn.api.map.Marker(oIcon, {title : '<%=bean.getRest()%>'});
+		groups[<%=i%>] = '<%=bean.getGroups()%>';
+		rest[<%=i%>] = '<%=bean.getRest()%>';
+		menu[<%=i%>] = '<%=bean.getMenu()%>';
+		tell[<%=i%>] = '<%=bean.getTel()%>';
+		oMarker.setPoint(oPoint);
+		oMap.addOverlay(oMarker);
+<%}%>
+
+		oMap.attach('mouseenter', function(oCustomEvent) {
+			var oTarget = oCustomEvent.target;
+			// 마커위에 마우스 올라간거면
+			if (oTarget instanceof nhn.api.map.Marker) {
+				var oMarker = oTarget;
+				oLabel.setVisible(true, oMarker); // - 특정 마커를 지정하여 해당 마커의 title을 보여준다.
+			}
+		});
+
+		oMap.attach('mouseleave', function(oCustomEvent) {
+			var oTarget = oCustomEvent.target;
+			// 마커위에서 마우스 나간거면
+			if (oTarget instanceof nhn.api.map.Marker) {
+				oLabel.setVisible(false);
+			}
+		});
+
+		/////////////////////////////////////////////////////////////////
+
+		oMap.attach('click',
+						function(oCustomEvent) {
+							var oPoint = oCustomEvent.point;
+							var oTarget = oCustomEvent.target;
+							var oMarkerTitle = oCustomEvent.target.getTitle();
+
+							// 마커 클릭하면 
+							if (oTarget instanceof nhn.api.map.Marker) {
+								// 겹침 마커 클릭한거면 
+								if (oCustomEvent.clickCoveredMarker) {
+									return;
+								}
+
+								for (i = 0; i < rest.length; i++) {
+									if (rest[i] == oMarkerTitle) {
+										oMarkerId = i;
+										break;
+									}
+								}
+								infoWindow
+										.setContent('<DIV style="border-top:1px solid; border-bottom:1px groove black; border-left:1px solid; border-right:1px groove black;margin-bottom:0px;color:black;background-color:white; width:170px; height:140px;">'
+												+ '<h2 align=center>'+rest[oMarkerId]+'<br><hr></h3>'
+												+'<ul>'
+												+ '<li><h3>'+groups[oMarkerId]+'</h3>'
+												+ '<li><h3>'+'주메뉴='+menu[oMarkerId]+'</h3>'
+												+ '<li><h3>'+tell[oMarkerId]+'</h3></ul>'
+												+ '</div>');
+								infoWindow.setPoint(oTarget.getPoint());
+								infoWindow.setVisible(true);
+								infoWindow.setPosition({
+									right : 5,
+									top : 20
+								});
+								infoWindow.autoPosition();
+								return;
+							}
+						});
+	</script>
+</body>
+</html>
+

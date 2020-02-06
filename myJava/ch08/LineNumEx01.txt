@@ -1,0 +1,79 @@
+ 1 : package ch08;
+ 2 : 
+ 3 : import java.io.BufferedReader;
+ 4 : import java.io.BufferedWriter;
+ 5 : import java.io.FileReader;
+ 6 : import java.io.FileWriter;
+ 7 : 
+ 8 : public class LineNumEx01 {
+ 9 : 	public static void main(String[] args) {
+10 : 		try {
+11 : 			FileReader fr = new FileReader("ch08/LineNumEx01.java");
+12 : 			BufferedReader br = new BufferedReader(fr);
+13 : 			
+14 : 			FileWriter fw = new FileWriter("ch08/LineNumEx01.txt");
+15 : 			BufferedWriter bw = new BufferedWriter(fw);
+16 : 			
+17 : 			String s = "";
+18 : 			int i = 1;
+19 : 			while(true) {
+20 : 				s = br.readLine();
+21 : 				if(s==null) break;
+22 : 				if(i<10) s= " "+ i + " : " + s;
+23 : 				else s = i + " : " + s;
+24 : 				//System.out.println(s);
+25 : 				
+26 : 				bw.write(s);
+27 : 				bw.newLine();
+28 : 				bw.flush();				
+29 : 				
+30 : 				i++;
+31 : 			}
+32 : 		} catch (Exception e) {
+33 : 			e.printStackTrace();
+34 : 		}
+35 : 	}
+36 : }
+ 1 : package ch08;
+ 1 : package ch08;
+ 1 : package ch08;
+ 2 : 
+ 3 : import java.io.BufferedReader;
+ 4 : import java.io.BufferedWriter;
+ 5 : import java.io.FileReader;
+ 6 : import java.io.FileWriter;
+ 7 : 
+ 8 : public class LineNumEx01 {
+ 9 : 	public static void main(String[] args) {
+10 : 		try {
+11 : 			FileReader fr = new FileReader("ch08/LineNumEx01.java");
+12 : 			BufferedReader br = new BufferedReader(fr);
+13 : 			
+14 : 			//파일이 생성: true를 해놓으면 자동 flush 기능이 진행된다.
+15 : 			FileWriter fw = new FileWriter("ch08/LineNumEx01.txt", true);
+16 : 			BufferedWriter bw = new BufferedWriter(fw);
+17 : 			
+18 : 			String s = "";
+19 : 			int i = 1;
+20 : 			while(true) {
+21 : 				s = br.readLine();
+22 : 				if(s==null) break;
+23 : 				if(i<10) s= " "+ i + " : " + s;
+24 : 				else s = i + " : " + s;
+25 : 				//System.out.println(s);
+26 : 				
+27 : 				bw.write(s);
+28 : 				bw.newLine();
+29 : 				//bw.flush();				
+30 : 			
+31 : 				i++;
+32 : 			}
+33 : 				bw.close();
+34 : 				br.close();
+35 : 				System.out.println("성공");
+36 : 			
+37 : 		} catch (Exception e) {
+38 : 			e.printStackTrace();
+39 : 		}
+40 : 	}
+41 : }

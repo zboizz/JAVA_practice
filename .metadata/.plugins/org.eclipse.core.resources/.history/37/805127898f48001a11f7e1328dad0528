@@ -1,0 +1,16 @@
+<<<<<<< HEAD
+<%@page pageEncoding="EUC-KR"%>
+<table width="75%" align="center" bgcolor="#080808">
+  
+  <tr>
+  <th><a href="admin/index.jsp">包府磊</a></th>
+  </tr>
+=======
+<%@page pageEncoding="EUC-KR"%>
+<table width="75%" align="center" bgcolor="#080808">
+  
+  <tr>
+  <th><a href="admin/index.jsp">包府磊</a></th>
+  </tr>
+>>>>>>> 7a2570a9a3b56a59e7c576d4259c92a34a7baff8
+</table>
