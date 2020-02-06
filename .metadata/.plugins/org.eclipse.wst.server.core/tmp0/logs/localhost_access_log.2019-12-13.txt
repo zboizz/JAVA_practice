@@ -1,0 +1,11 @@
+127.0.0.1 - - [13/Dec/2019:16:42:33 +0900] "GET / HTTP/1.1" 404 1115
+127.0.0.1 - - [13/Dec/2019:16:42:41 +0900] "GET /online-shopping-mall/top.jsp HTTP/1.1" 200 6924
+127.0.0.1 - - [13/Dec/2019:16:42:41 +0900] "GET /online-shopping-mall/css/reset.css HTTP/1.1" 304 -
+127.0.0.1 - - [13/Dec/2019:16:42:41 +0900] "GET /online-shopping-mall/img/logo4.png HTTP/1.1" 304 -
+127.0.0.1 - - [13/Dec/2019:16:42:41 +0900] "GET /online-shopping-mall/css/top.css HTTP/1.1" 200 11769
+127.0.0.1 - - [13/Dec/2019:16:42:41 +0900] "GET /online-shopping-mall/js/top.js HTTP/1.1" 200 7258
+127.0.0.1 - - [13/Dec/2019:16:42:42 +0900] "GET /online-shopping-mall/font/NotoSansCJKkr-Bold.otf HTTP/1.1" 304 -
+127.0.0.1 - - [13/Dec/2019:16:42:42 +0900] "GET /favicon.ico HTTP/1.1" 404 1126
+127.0.0.1 - - [13/Dec/2019:16:43:12 +0900] "GET /online-shopping-mall/xx.jsp HTTP/1.1" 404 1146
+127.0.0.1 - - [13/Dec/2019:16:43:19 +0900] "GET /online-shopping-mall/search.jsp?searchValue=asd HTTP/1.1" 200 12
+127.0.0.1 - - [13/Dec/2019:16:43:30 +0900] "POST /online-shopping-mall/top.jsp HTTP/1.1" 200 6924

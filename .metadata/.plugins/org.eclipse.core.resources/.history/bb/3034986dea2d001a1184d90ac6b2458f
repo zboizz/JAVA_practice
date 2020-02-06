@@ -1,0 +1,7 @@
+package ctag;
+
+import javax.servlet.jsp.tagext.SimpleTagSupport;
+
+public class welcomeTag extends SimpleTagSupport{
+
+}

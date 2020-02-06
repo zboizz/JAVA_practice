@@ -1,0 +1,123 @@
+
+11월 06, 2019 15:55:26.36 NEW SESSION
+11월 06, 2019 15:55:26.36 [8700:8344:1106/155526.353:ERROR:socket_stream.cc(218)] Closing stream with result -2
+11월 06, 2019 15:55:46.64 [8700:8344:1106/155546.648:ERROR:connection_factory_impl.cc(417)] Failed to connect to MCS endpoint with error -106
+11월 06, 2019 16:13:16.26 [8700:8344:1106/161316.266:ERROR:mcs_client.cc(760)] Received close command, resetting connection.
+11월 06, 2019 16:26:13.36 [8700:8344:1106/162613.360:ERROR:socket_stream.cc(218)] Closing stream with result -2
+11월 06, 2019 16:26:33.89 [8700:8344:1106/162633.892:ERROR:connection_factory_impl.cc(417)] Failed to connect to MCS endpoint with error -106
+
+11월 14, 2019 13:20:08.37 NEW SESSION
+11월 14, 2019 13:20:08.37 [13988:13232:1114/132008.363:ERROR:socket_stream.cc(218)] Closing stream with result -2
+11월 14, 2019 13:20:32.92 [13988:13232:1114/132032.928:ERROR:connection_factory_impl.cc(417)] Failed to connect to MCS endpoint with error -106
+11월 14, 2019 13:47:53.35 [13988:13232:1114/134753.355:ERROR:socket_stream.cc(218)] Closing stream with result -2
+11월 14, 2019 13:47:53.42 [13988:13232:1114/134753.422:ERROR:connection_factory_impl.cc(417)] Failed to connect to MCS endpoint with error -105
+11월 14, 2019 13:59:15.02 [13988:1688:1114/135915.024:ERROR:page_load_metrics_update_dispatcher.cc(166)] Invalid first_paint 0.365 s for first_image_paint 0.317 s
+11월 14, 2019 13:59:16.41 [13988:1688:1114/135916.418:ERROR:page_load_metrics_update_dispatcher.cc(166)] Invalid first_paint 0.365 s for first_image_paint 0.317 s
+
+11월 15, 2019 13:27:32.46 NEW SESSION
+11월 15, 2019 13:27:32.46 [5812:11680:1115/132732.452:ERROR:socket_stream.cc(218)] Closing stream with result -2
+11월 15, 2019 13:27:56.93 [5812:11680:1115/132756.934:ERROR:connection_factory_impl.cc(417)] Failed to connect to MCS endpoint with error -106
+
+11월 20, 2019 11:24:43.60 NEW SESSION
+11월 20, 2019 11:24:43.60 
+11월 20, 2019 11:24:43.60 KLIB_SelfTest return : KLR_OK
+11월 20, 2019 11:36:19.70 
+11월 20, 2019 11:36:19.70 KLIB_SelfTest return : KLR_OK
+11월 20, 2019 18:30:05.59 
+11월 20, 2019 18:30:05.59 KLIB_SelfTest return : KLR_OK
+
+11월 21, 2019 14:01:35.13 NEW SESSION
+11월 21, 2019 14:01:35.13 
+11월 21, 2019 14:01:35.14 KLIB_SelfTest return : KLR_OK
+11월 21, 2019 14:01:50.00 
+11월 21, 2019 14:01:50.00 KLIB_SelfTest return : KLR_OK
+11월 21, 2019 14:06:21.78 
+11월 21, 2019 14:06:21.78 KLIB_SelfTest return : KLR_OK
+11월 21, 2019 14:09:37.10 
+11월 21, 2019 14:09:37.10 KLIB_SelfTest return : KLR_OK
+11월 21, 2019 14:14:03.21 
+11월 21, 2019 14:14:03.21 KLIB_SelfTest return : KLR_OK
+11월 21, 2019 14:27:35.61 
+11월 21, 2019 14:27:35.61 KLIB_SelfTest return : KLR_OK
+
+12월 03, 2019 14:28:29.19 NEW SESSION
+12월 03, 2019 14:28:29.19 [10484:11032:1203/142829.192:ERROR:socket_stream.cc(218)] Closing stream with result -2
+12월 03, 2019 14:28:52.83 [10484:11032:1203/142852.830:ERROR:connection_factory_impl.cc(417)] Failed to connect to MCS endpoint with error -106
+
+12월 11, 2019 17:24:21.29 NEW SESSION
+12월 11, 2019 17:24:21.30 
+12월 11, 2019 17:24:21.30 KLIB_SelfTest return : KLR_OK
+
+12월 12, 2019 18:14:32.59 NEW SESSION
+12월 12, 2019 18:14:32.59 
+12월 12, 2019 18:14:32.59 KLIB_SelfTest return : KLR_OK
+12월 12, 2019 18:15:31.45 
+12월 12, 2019 18:15:31.46 KLIB_SelfTest return : KLR_OK
+
+12월 13, 2019 16:43:34.69 NEW SESSION
+12월 13, 2019 16:43:34.70 
+12월 13, 2019 16:43:34.71 KLIB_SelfTest return : KLR_OK
+
+12월 17, 2019 13:33:02.10 NEW SESSION
+12월 17, 2019 13:33:02.10 
+12월 17, 2019 13:33:02.10 KLIB_SelfTest return : KLR_OK
+12월 17, 2019 13:53:12.04 
+12월 17, 2019 13:53:12.04 KLIB_SelfTest return : KLR_OK
+12월 17, 2019 13:58:22.00 
+12월 17, 2019 13:58:22.00 KLIB_SelfTest return : KLR_OK
+12월 17, 2019 14:21:53.12 
+12월 17, 2019 14:21:53.12 KLIB_SelfTest return : KLR_OK
+12월 17, 2019 14:22:22.13 
+12월 17, 2019 14:22:22.13 KLIB_SelfTest return : KLR_OK
+
+1월 02, 2020 14:55:22.22 NEW SESSION
+1월 02, 2020 14:55:22.22 
+1월 02, 2020 14:55:22.22 KLIB_SelfTest return : KLR_OK
+1월 02, 2020 14:55:31.19 
+1월 02, 2020 14:55:31.19 KLIB_SelfTest return : KLR_OK
+1월 02, 2020 14:58:48.05 
+1월 02, 2020 14:58:48.06 KLIB_SelfTest return : KLR_OK
+1월 02, 2020 15:03:46.48 
+1월 02, 2020 15:03:46.48 KLIB_SelfTest return : KLR_OK
+1월 02, 2020 15:09:32.18 
+1월 02, 2020 15:09:32.18 KLIB_SelfTest return : KLR_OK
+1월 02, 2020 15:20:37.00 
+1월 02, 2020 15:20:37.00 KLIB_SelfTest return : KLR_OK
+1월 02, 2020 15:22:04.02 
+1월 02, 2020 15:22:04.02 KLIB_SelfTest return : KLR_OK
+1월 02, 2020 15:22:15.66 
+1월 02, 2020 15:22:15.66 KLIB_SelfTest return : KLR_OK
+1월 02, 2020 15:24:47.91 
+1월 02, 2020 15:24:47.91 KLIB_SelfTest return : KLR_OK
+1월 02, 2020 15:25:06.82 
+1월 02, 2020 15:25:06.82 KLIB_SelfTest return : KLR_OK
+1월 02, 2020 15:25:20.60 
+1월 02, 2020 15:25:20.61 KLIB_SelfTest return : KLR_OK
+1월 02, 2020 15:25:31.71 
+1월 02, 2020 15:25:31.71 KLIB_SelfTest return : KLR_OK
+1월 02, 2020 15:28:32.94 
+1월 02, 2020 15:28:32.94 KLIB_SelfTest return : KLR_OK
+
+1월 03, 2020 11:11:23.37 NEW SESSION
+1월 03, 2020 11:11:23.37 
+1월 03, 2020 11:11:23.39 KLIB_SelfTest return : KLR_OK
+1월 03, 2020 15:34:50.45 
+1월 03, 2020 15:34:50.45 KLIB_SelfTest return : KLR_OK
+1월 03, 2020 15:36:09.69 
+1월 03, 2020 15:36:09.69 KLIB_SelfTest return : KLR_OK
+1월 03, 2020 15:36:52.65 
+1월 03, 2020 15:36:52.65 KLIB_SelfTest return : KLR_OK
+1월 03, 2020 15:39:21.02 
+1월 03, 2020 15:39:21.02 KLIB_SelfTest return : KLR_OK
+1월 03, 2020 16:12:30.06 
+1월 03, 2020 16:12:30.06 KLIB_SelfTest return : KLR_OK
+
+2월 06, 2020 12:11:42.32 NEW SESSION
+2월 06, 2020 12:11:42.32 
+2월 06, 2020 12:11:42.33 KLIB_SelfTest return : KLR_OK
+2월 06, 2020 12:19:16.06 
+2월 06, 2020 12:19:16.06 KLIB_SelfTest return : KLR_OK
+2월 06, 2020 12:20:28.21 
+2월 06, 2020 12:20:28.21 KLIB_SelfTest return : KLR_OK
+2월 06, 2020 12:21:04.79 
+2월 06, 2020 12:21:04.79 KLIB_SelfTest return : KLR_OK

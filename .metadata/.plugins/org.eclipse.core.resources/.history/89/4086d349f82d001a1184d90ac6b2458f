@@ -1,0 +1,8 @@
+<%@page import="java.sql.Connection"%>
+<%@page contentType="text/html; charset=EUC-KR"%>
+<%@taglib prefix="tag" uri="/WEB-INF/tlds/PageTag.tld"%>
+<tag:db id="db"/>
+
+<%
+		Connection con = db.getConnection();
+%>

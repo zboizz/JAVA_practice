@@ -1,0 +1,407 @@
+﻿<%@page import="admin.CateBean"%>
+<%@page import="java.util.Vector"%>
+<%@ page contentType="text/html; charset=utf-8"%>
+<%
+	request.setCharacterEncoding("utf-8");
+%>
+<jsp:useBean id="caBean" class="admin.CateBean" />
+<jsp:useBean id="caMgr" class="admin.AdminMgr" />
+<jsp:useBean id="messageMgr" class="message.MessageMgr" />
+<%
+	String param = request.getParameter("PATH");//경로값
+	String cof = request.getParameter("cof");
+
+	/*  쪽지관련 */
+	int m_num = 0;
+	int count = 0;
+	int messageReadCount = 0;
+	if (session.getAttribute("m_num") != null) {
+		m_num = ((Integer) session.getAttribute("m_num")).intValue();
+	}
+	count = messageMgr.getMessageCount(m_num);
+	messageReadCount = messageMgr.getMessageReadCount(m_num);
+	/*  쪽지관련  끝 */
+%>
+<!DOCTYPE HTML>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="shortcut icon" href="favicon.ico">
+<title>JSPStudy</title>
+<!-- smartEditor시작 -->
+<script type="text/javascript" src="../se2/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="../se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"></script>
+<!-- smartEditor끝-->
+
+<!-- Bootstrap시작 -->
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+<script src="https://code.jquery.com/jquery.js"></script>
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/bootstrap/js/bootstrap.min.js"></script>
+<script src="/bootstrap/js/holder.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+<!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+      <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+<!-- Bootstrap끝 -->
+
+<!-- SyntaxHighlighter -->
+<script type="text/javascript" src="/main/scripts/shCore.js"></script>
+<script type="text/javascript" src="/main/scripts/shAutoloader.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushAppleScript.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushAS3.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushBash.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushColdFusion.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushCpp.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushCSharp.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushCss.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushDelphi.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushDiff.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushErlang.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushGroovy.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushJava.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushJavaFX.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushJScript.js"></script>
+<!-- <script type="text/javascript" src="/main/scripts/shBrushObjC.js"></script> -->
+<script type="text/javascript" src="/main/scripts/shBrushPerl.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushPhp.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushPlain.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushPowerShell.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushPython.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushRuby.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushSass.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushScala.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushSql.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushVb.js"></script>
+<script type="text/javascript" src="/main/scripts/shBrushXml.js"></script>
+<script type="text/javascript" src="/main/scripts/shLegacy.js"></script>
+<script type="text/javascript">
+	SyntaxHighlighter.all();
+</script>
+<link type="text/css" rel="stylesheet" href="/main/styles/shCoreDefault.css" />
+<!-- SyntaxHighlighter end -->
+
+<!-- 구글검색 -->
+<script type="text/javascript" src="http://www.google.com/afsonline/show_afs_search.js"></script>
+<script>
+	function winpop(url) {
+		window.open(url, "새창",
+				"width=500, height=500, toolbar=no, scrollbars=yes, resizable=yes");
+	}
+</script>
+<!-- message 스크립트  -->
+<script type="text/javascript">
+	function openMessage(receive_nick, m_num) {
+		var src = "/message/messageList.jsp?receive_nick="
+				+ receive_nick + "&m_num=" + m_num;
+		window
+				.open(src, "쪽지보기",
+						"width=500, height=500, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+	}
+	function goPopUp(){
+		window.open("error_list.jsp","오타내역",
+			"width=600, height=570, toolbar=no, menubar=no, scrollbars=no, resizable=yes");
+	}
+</script>
+<!--  message 스크립트 끝  -->
+</head>
+<body>
+	<div class="container">
+		<!-- 페이지 상단 시작 -->
+		<div class="row">
+			<div class="col-md-9">
+				<a href="/main/main.jsp" title="사이트 처음으로">
+					<img src="/main/images/jsptitle.jpg" class="img-responsive" alt="Responsive image" style="width: 460px; height: 100px;" />
+				</a>
+			</div>
+
+			<!-- 회원정보 -->
+			<%
+				if (session.getAttribute("nick") != null) {
+					String nick = (String) session.getAttribute("nick");
+					String photo = (String) session.getAttribute("photo");
+			%>
+			<div class="media col-md-3 pull-right visible-lg">
+				<a class="pull-left" href="#"> <img class="media-object" src="/member/photo/<%=photo%>" style="width: 55px;">
+				</a>
+				<div class="media-body">
+					<a href="#" class="text-warning"><b><%=nick%></b></a><br/> 
+					<a href="javascript:openMessage('<%=nick%>','<%=session.getAttribute("m_num")%>');">
+						<span>내쪽지함[<%=messageReadCount%>]</span></a><br /> 					
+					<a href="/main/main.jsp?PATH=/member/mypage.jsp" class="text-primary">MyPage</a> <br /> 
+					<a href="/member/logout.jsp">로그아웃</a><br /> <br />
+				</div>
+			</div>
+			<%
+				} else {
+			%>
+			<%
+				}
+			%>
+			<!-- 회원정보끝 -->
+		</div>
+		<!-- 메뉴바  -->
+		<div class="row clearfix">
+			<nav class="navbar navbar-inverse" role="navigation">
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+						<span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand glyphicon" href="main.jsp"> <span class="glyphicon glyphicon-home"></span>
+					</a>
+				</div>
+				<div class="collapse navbar-collapse navbar-ex1-collapse">
+					<ul class="nav navbar-nav">
+						<li><a href="main.jsp?PATH=/admin/adminList.jsp?a_division1=notice&keyField=a_division1&keyWord=notice">공지사항</a></li>
+						<li><a href="main.jsp?PATH=/board/boardList.jsp?b_division1=free">자유게시판</a></li>
+						<li class="dropdown"><a href="main.jsp?PATH=/board/boardList.jsp?b_division1=qna" class="dropdown-toggle" data-toggle="dropdown">Q & A <b
+								class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<!-- Q & A  카테고리 보여주기 -->
+								<%
+								String qDiv = "2";
+								Vector<CateBean> qlist = caMgr.getCate(qDiv);									
+									for (int i = 0; i < qlist.size(); i++) {
+										caBean = qlist.get(i);
+								%>
+								<li><a href="main.jsp?PATH=/board/boardList.jsp?b_division1=qna&keyField=category&keyWord=<%=caBean.getCate()%>&b_category=<%=caBean.getCate()%>">
+										<%=caBean.getCate()%>
+								</a></li>
+								<%
+									}
+								%>
+							</ul></li>
+						<li class="dropdown"><a href="main.jsp?PATH=/admin/adminList.jsp?a_division1=lecture" class="dropdown-toggle" data-toggle="dropdown">강의실 <b
+								class="caret"></b>
+						</a>
+							<ul class="dropdown-menu">
+								<!-- 강의 카테고리 보여주기 -->
+								<%
+									String lDiv = "0";								
+									Vector<CateBean> klist = caMgr.getCate(lDiv);
+									
+									for (int i = 0; i < klist.size(); i++) {
+										caBean = klist.get(i);
+								%>
+								<li><a href="main.jsp?PATH=/admin/adminList.jsp?a_division1=lecture&keyField=a_category&keyWord=<%=caBean.getCate()%>"> <%=caBean.getCate()%>
+								</a></li>
+								<%
+									}
+								%>
+							</ul></li>
+						<li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown">Book <b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<%
+								String bDiv = "1";
+									Vector<CateBean> blist = caMgr.getCate(bDiv);
+									for (int i = 0; i < blist.size(); i++) {
+										caBean = blist.get(i);
+								%>
+									<li>
+									
+								<!--	<a href="main.jsp?PATH=/admin/adminList.jsp?a_division1=book&keyField=a_category&keyWord=<%=caBean.getCate()%>"><%=caBean.getCate()%></a>-->
+									
+									<a href="main.jsp?PATH=/board/boardList.jsp?b_division1=book&keyField=category&keyWord=<%=caBean.getCate()%>&b_category=<%=caBean.getCate()%>"><%=caBean.getCate()%></a>
+								</li>
+								<%
+									}
+								%>
+								</ul>
+							</li>
+						<!-- Google -->
+						<form class="navbar-form navbar-left visible-lg" role="search" method="get">
+							<div class="form-group">
+								<input type="hidden" name="cof"
+									value="GALT:#008000;GL:1;DIV:#336699;VLC:663399;AH:center;BGC:FFFFFF;LBGC:336699;ALC:0000FF;LC:0000FF;T:000000;GFNT:0000FF;GIMP:0000FF;FORID:11" /> <input
+									type="text" name="q" value="" class="form-control" placeholder="Search" id="sbi" />
+							</div>
+							<input type="submit" name="sa" value="Google 검색" class="btn btn-warning" id="sbb" />
+						</form>
+						<!-- Google 끝 -->
+
+						<li class="dropdown">
+							<%
+								if (session.getAttribute("nick") != null) {
+									String nick = (String) session.getAttribute("nick");
+							%> <a href="#" class="dropdown-toggle glyphicon glyphicon-user active" data-toggle="dropdown"> <b><%=nick%></b> <%
+ 								} else {
+ 							%> <a href="#" class="dropdown-toggle glyphicon glyphicon-user active" data-toggle="dropdown"> <%
+ 								}
+							%> <b class="caret"></b></a>
+								<ul class="dropdown-menu">
+									<%
+										if (session.getAttribute("idKey") == null) {
+									%>
+									<li><a href="/main/main.jsp?PATH=/member/login.jsp">로그인</a></li>
+									<li><a href="/main/main.jsp?PATH=/member/registerForm.jsp">회원가입</a></li>
+									<%
+										} else {
+									%>
+									<li><a href="/main/main.jsp?PATH=/member/mypage.jsp">MyPage</a></li>
+									<li>
+										<%
+											if (session.getAttribute("nick") != null) {
+													String nick = (String) session.getAttribute("nick");
+										%> <a href="javascript:openMessage('<%=nick%>','<%=session.getAttribute("m_num")%>');"> <span>내쪽지함[<%=messageReadCount%>]
+										</span>
+									</a> <%
+ 											}
+ 										%>
+									</li>
+									<li><a href="/main/main.jsp?PATH=/member/logout.jsp">로그아웃</a></li>
+									<%
+										}
+									%>
+								</ul>
+						</li>
+						<%
+							if (session.getAttribute("idKey") == null) {
+						%>
+						<p class="navbar-text pull-left">
+							<a href="/main/main.jsp?PATH=/member/login.jsp" class="navbar-link">로그인</a>
+						</p>
+						<p class="navbar-text pull-left">
+							<a href="/main/main.jsp?PATH=/member/registerForm.jsp" class="navbar-link">회원가입</a>
+						</p>
+						<%
+							} else {
+						%>
+						
+						<%
+							}
+						%>
+					</ul>
+				</div>
+			</nav>
+		</div>
+		<!-- 메뉴바end  -->
+		<!-- 배너 -->
+		<!-- <div class="row">
+			<img src="http://www.crayonpop.com/files/attach/images/62/062/ed7d025d9ceb03a5acf48851ef1b36c2.jpg"
+				class="img-thumbnail" width="100%" /> 
+		</div> -->
+		<!-- 배너끝 -->
+
+		<!-- 페이지 상단 끝 -->
+		<div class="row" style="margin-top: -15px;">
+			<!-- 좌측메뉴, 배너 -->
+			<div class="col-md-2 visible-lg">
+				<div class="row well">
+					<fieldset>
+						<legend>
+							<div align="center"><img src="images/apis.png" width="100" height="32">
+							</div>
+						</legend>
+						   <img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a href="javascript:winpop('https://docs.oracle.com/en/java/javase/13/docs/api/index.html')">
+							J2SE 13</a><br/><br/>
+						   <img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a href="javascript:winpop('https://docs.oracle.com/en/java/javase/12/docs/api/index.html')">
+							J2SE 12</a><br/><br/>
+							<img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a href="javascript:winpop('http://docs.oracle.com/javaee/7/api/index.html')"> J2EE
+							7.0</a><br/> <br/>
+							<img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a
+							href="javascript:winpop('http://tomcat.apache.org/tomcat-9.0-doc/servletapi/index.html')"> Servlet 4.0</a><br/><br/> 
+							<img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a href="javascript:winpop('http://tomcat.apache.org/tomcat-9.0-doc/jspapi/index.html')"> JSP 2.3</a><br/><br/> 
+							<img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a href="javascript:winpop('https://tomcat.apache.org/tomcat-9.0-doc/index.html')"> Tomcat 9.0</a><br/><br/> 
+						    <img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a
+							href="javascript:winpop('http://tomcat.apache.org/tomcat-8.0-doc/elapi/index.html')"> EL 3.0</a><br/><br/> 
+							<img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a
+							href="javascript:winpop('http://docs.oracle.com/javaee/7/api/javax/websocket/package-summary.html')"> WebSocket 1.0</a><br/> <br/> 
+							<img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a href="javascript:winpop('http://docs.oracle.com/javaee/1.4/tutorial/doc/JSTL.html')">
+							JSTL TUTORIAL</a><br/><br/><img src="images/point.png" width="13" height="13"> &nbsp;&nbsp; <a
+							href="javascript:winpop('http://commons.apache.org/fileupload/apidocs/index.html')"> File Upload</a><br/><br/>
+					</fieldset>
+				</div>
+				<div class="row">
+					<a href="javascript:winpop('http://www.java.com')"> <img src="images/java-logo.jpg" class="img-thumbnail" style="width: 200px; height: 100px;">
+					</a><br /> 
+					
+					<a href="javascript:winpop('http://www.eclipse.org/')"> <img src="images/eclipse.jpg" class="img-thumbnail"
+						style="width: 200px; height: 100px;">
+					</a><br />
+					<a href="javascript:winpop('https://tomcat.apache.org/download-90.cgi')"> <img src="images/apachetomcat.png" class="img-thumbnail" style="width: 200px; height: 100px;">
+					</a><br />
+					<a href="javascript:winpop('http://www.oracle.com/')"> <img src="images/oracle_logo.jpg" class="img-thumbnail" style="width: 200px; height: 100px;">
+					</a><br />
+					<!--<a href="javascript:winpop('http://www.jquery.com/')"> <img src="images/jquery_logo.jpg" class="img-thumbnail" style="width: 200px; height: 100px;">
+					</a><br />
+					<a href="javascript:winpop('http://www.w3.org/html/wg/drafts/html/master/')"> <img src="images/HTML5.jpg" class="img-thumbnail" style="width: 200px; height: 100px;">
+					</a>-->
+				</div>
+			</div>
+			<!-- 좌측메뉴, 배너 끝-->
+			<!-- 우측페이지 본문 시작 -->			
+			<div class="col-md-10">
+				<%
+					if (param == null || param == "") {
+				%>
+				<%
+					if (cof == null || cof == "") {
+				%>
+				<jsp:include page="firstPage.jsp" />
+				<%
+					} else {
+				%>
+				<!-- Google Search  -->
+				<div id="googleSearchUnitIframe" class="col-md-8"></div>
+				<script type="text/javascript">
+					var googleSearchIframeName = 'googleSearchUnitIframe';
+					var googleSearchFrameWidth = 592;
+					var googleSearchFrameborder = 0;
+					var googleSearchDomain = 'www.google.co.kr';
+				</script>
+				<script type="text/javascript" src="http://www.google.com/afsonline/show_afs_search.js"></script>
+				<!-- Google Search  -->
+				<div class="col-md-2">
+					<!-- 광고 -->
+					<!-- <iframe width="300" src="//www.youtube.com/embed/CaTcPBuqspE" frameborder="0" allowfullscreen></iframe>
+					<iframe width="300" src="//www.youtube.com/embed/2KjwBm6zOaE?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+					<iframe width="300" src="//www.youtube.com/embed/F87TsvIt4u4?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+					<iframe width="300" src="//www.youtube.com/embed/26_F392ir7Q?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+					<iframe width="300" src="//www.youtube.com/embed/yMqL1iWfku4?feature=player_detailpage" frameborder="0" allowfullscreen></iframe>
+					<iframe width="300" src="//www.youtube.com/embed/qCPFK61Yu3M?feature=player_detailpage" frameborder="0" allowfullscreen></iframe> -->
+				</div>
+				<%
+					}
+				%>
+				<%
+					} else {
+				%>
+				<jsp:include page="<%=param%>" />
+				<%
+					}
+				%>			
+			</div>
+			<!-- 우측페이지 본문 끝 -->
+		</div>
+
+		<!-- 페이지 하단 시작-->
+		<div class="row text-danger" style="padding-top: 50px; padding-bottom: 100px; clear:both;">
+			<p class="text-center col-md-12">
+				Copyright &copy; since 2001 JSPStudy.co.kr All rights reserved.<br />
+				 <!-- PROJECT - Response 2014 -->
+				<% 
+					try{				
+					if(session.getAttribute("grade")!=null){//로그인 한상태
+						if(session.getAttribute("grade").equals("10")){ //관리자일떄							
+					%><a href="main.jsp?PATH=/admin/admin.jsp">관리자</a>
+				<%
+						}else{ //일반회원
+							
+						}
+							
+					}else{//로그인 안한상태
+						
+					}
+					}catch (Exception e){
+						e.printStackTrace();
+					}
+					%>
+			</p>
+		</div>
+		<!-- 페이지 하단 끝-->
+	</div>
+</body>
+</html>

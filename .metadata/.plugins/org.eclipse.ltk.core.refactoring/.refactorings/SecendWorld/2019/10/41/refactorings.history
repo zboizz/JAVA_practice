@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename compilation unit &apos;TryFirst.DBFrame.java&apos; to &apos;DBMainFrame.java&apos;&#x0D;&#x0A;- Original project: &apos;SecendWorld&apos;&#x0D;&#x0A;- Original element: &apos;TryFirst.DBFrame.java&apos;&#x0D;&#x0A;- Renamed element: &apos;TryFirst.DBMainFrame.java&apos;" description="Rename compilation unit &apos;DBFrame.java&apos;" flags="2" id="org.eclipse.jdt.ui.rename.compilationunit" input="/&lt;TryFirst{DBFrame.java" name="DBMainFrame.java" references="false" stamp="1570674665857" version="1.0"/>
+</session>

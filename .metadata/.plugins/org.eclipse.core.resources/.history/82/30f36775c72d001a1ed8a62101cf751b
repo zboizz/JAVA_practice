@@ -1,0 +1,7 @@
+<!-- timeZone.jsp  -->
+<%@page import="java.util.TimeZone" %>
+<%@ page contentType="text/html; charset=EUC-KR"%>
+<%
+		request.setCharacterEncoding("EUC-KR");
+		
+%>

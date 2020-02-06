@@ -1,0 +1,7 @@
+<!-- elMothod.jsp  -->
+<%@page import="el.ElMethod"%>
+<%@ page contentType="text/html; charset=EUC-KR"%>
+<%
+	int num = 123456789;		
+%>
+JSP ¹æ½Ä : <%=ElMethod.comma(num%>
